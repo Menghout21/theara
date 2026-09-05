@@ -232,7 +232,6 @@
   <div id="introLine">I LOVE YOU</div>
   <div id="nameContainer"></div>
   <div id="heartsBurst">💖 💕 💓 💞 💘 💝</div>
-  <button class="cute-btn" id="playAgainBtn">Play again</button>
 </div>
 
 <!-- <footer>made with 💗 for THEARA</footer> -->
@@ -284,7 +283,6 @@
   const stage2 = document.getElementById('stage2');
   const nameContainer = document.getElementById('nameContainer');
   const heartsBurst = document.getElementById('heartsBurst');
-  const playAgainBtn = document.getElementById('playAgainBtn');
   const NAME = "THEARA";
   const heartChoices = ['💗','💕','💖','💓','💞','❤️','🩷','💘'];
 
@@ -310,8 +308,6 @@
   function buildNameAnimation() {
     nameContainer.innerHTML = '';
     heartsBurst.classList.remove('show');
-    playAgainBtn.classList.remove('show');
-    playAgainBtn.style.opacity = 0;
 
     let globalDelayStep = 0;
     const perPieceGap = 18; // ms between each heart piece appearing
@@ -357,8 +353,7 @@
     nameContainer._revealTimer = setTimeout(() => {
       heartsBurst.classList.add('show');
       spawnSparklesAround(nameContainer);
-      playAgainBtn.classList.add('show');
-      playAgainBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      heartsBurst.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }, finishDelay);
   }
 
@@ -397,13 +392,6 @@
     stage2.classList.remove('hidden');
     window.scrollTo({ top: 0, behavior: 'instant' });
     buildNameAnimation();
-  }));
-
-  playAgainBtn.addEventListener('click', guardedClick(() => {
-    stage2.classList.add('hidden');
-    stage1.classList.remove('hidden');
-    window.scrollTo({ top: 0, behavior: 'instant' });
-    typeMessage();
   }));
 
   // ---------- Start ----------
